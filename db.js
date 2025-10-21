@@ -4,7 +4,7 @@ const { Pool } = pg;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  // ssl: { rejectUnauthorized: false } // descomenta si lo necesitas fuera de Railway
+  ssl: { rejectUnauthorized: false }, // 🔐 necesario para el proxy público de Railway
 });
 
 export default pool;
