@@ -1,0 +1,20 @@
+{
+  "name": "wu-railway-app",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "db:init": "node scripts/db-init.js",
+    "db:check": "node -e \"import('./db.js').then(async m=>{const c=m.default;await c.query('SELECT 1');console.log('DB OK');await c.end();}).catch(e=>{console.error(e);process.exit(1)})\"",
+    "collect:today": "node -e \"import('./src/cron-daily.js').then(m=>m.collectTodayForAllStations())\""
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
